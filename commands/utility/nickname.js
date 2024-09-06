@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 module.exports = {
 	cooldown: 5,
 	data: new SlashCommandBuilder()
-		.setName('apelido')
+		.setName('nickname')
 		.setDescription('Troca o seu apelido de alguém do servidor!')
         .addUserOption(option =>
             option
@@ -14,6 +14,7 @@ module.exports = {
         .addStringOption(option =>
                 option.setName('apelido')
                 .setDescription('Apelido desejado')
+                .setMaxLength(32)
             )
         .setDefaultMemberPermissions(PermissionFlagsBits.ChangeNickname),
 	async execute(interaction) {
@@ -21,11 +22,23 @@ module.exports = {
         const user = options.getMember("usuario");
         const nick = options.getString("apelido");
         if(nick == null){
+            interaction.reply("Apelido do usuário "+ `${user}` +" foi resetado!")
+            .then(() =>
+                setTimeout(
+                    () => interaction.deleteReply(),
+                    4_000
+                )
+            )
             user.setNickname("")
-            interaction.reply('Apelido resetado!');
         } else{
+            interaction.reply("Apelido do usuário "+ `${user}` +" alterado com sucesso para `"+ `${nick}` + "!`")
+            .then(() =>
+                setTimeout(
+                    () => interaction.deleteReply(),
+                    5_000
+                )
+            )
             user.setNickname(`${nick}`)
-            interaction.reply("Apelido alterado com sucesso para `"+ `${nick}` + "!`");
         }
 
 	},
