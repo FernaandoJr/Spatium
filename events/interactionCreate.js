@@ -22,7 +22,7 @@ module.exports = {
 
 		const now = Date.now();
 		const timestamps = cooldowns.get(command.data.name);
-		const defaultCooldownDuration = 3;
+		const defaultCooldownDuration = 5;
 		const cooldownAmount =
 			(command.cooldown ?? defaultCooldownDuration) * 1000;
 
@@ -32,16 +32,21 @@ module.exports = {
 
 			if (now < expirationTime) {
 				const expiredTimestamp = Math.round(expirationTime / 1000);
-				console.log(command.cooldown)
-				return interaction.reply({
-					content: `Espera um pouco! o comando \`${command.data.name}\` vai ficar disponível pra uso <t:${expiredTimestamp}:R>.`,
-					ephemeral: true,
-				}).then(() =>
-					setTimeout(
-						() => interaction.deleteReply(),
-						(command.cooldown * 1000)
-					)
-				)
+				console.log(command.cooldown);
+				return interaction
+					.reply({
+						content: `Espera um pouco! o comando \`${command.data.name}\` vai ficar disponível pra uso <t:${expiredTimestamp}:R>.`,
+						ephemeral: true,
+					})
+					.then(() =>
+						setTimeout(
+							() => interaction.deleteReply(),
+							command.cooldown * 1000
+						)
+					);
+			}
+			if (expirationTime > now) {
+				return interaction.deleteReply();
 			}
 		}
 

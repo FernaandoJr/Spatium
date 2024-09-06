@@ -1,3 +1,5 @@
 node .
 
 node deploy-commands.js
+
+embed: https://embed.dan.onl/?data=eyJjb2xvciI6IiNmZWMxMDAiLCJmb290ZXIiOnsidGV4dCI6IlNwYXRpdW0iLCJpY29uVXJsIjoiaHR0cHM6Ly9jZG4uZGlzY29yZGFwcC5jb20vYXZhdGFycy8xMjc5ODEzMDQyMDYxOTcxNTE3LzI4YjYzNDNhN2U0NDFhMGVlMWE5MzYwZjI4MTEyMDJlLndlYnAifSwidGltZXN0YW1wIjoxNzI1NjQ5OTA2NzczfQ%3D%3D
