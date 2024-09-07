@@ -32,7 +32,6 @@ module.exports = {
 
 			if (now < expirationTime) {
 				const expiredTimestamp = Math.round(expirationTime / 1000);
-				console.log(command.cooldown);
 				return interaction
 					.reply({
 						content: `Espera um pouco! o comando \`${command.data.name}\` vai ficar disponível pra uso <t:${expiredTimestamp}:R>.`,
