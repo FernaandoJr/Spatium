@@ -5,6 +5,8 @@ module.exports = {
 	async execute(interaction) {
 		const { cooldowns } = interaction.client;
 
+		
+
 		if (!interaction.isChatInputCommand()) return;
 		const command = interaction.client.commands.get(
 			interaction.commandName
@@ -32,9 +34,24 @@ module.exports = {
 
 			if (now < expirationTime) {
 				const expiredTimestamp = Math.round(expirationTime / 1000);
+
+
+				const locales = {
+					"en-US": {
+						cooldown: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`,
+					},
+					"pt-BR": {
+						cooldown: `Espere um pouco! você está no cooldown do \`${command.data.name}\`. Você irá poder usá-lo daqui <t:${expiredTimestamp}:R>.`,
+					}
+				}
+		
+				if (!(interaction.locale in locales)) {
+					interaction.locale = "en-US"; // Default to "en-US" if locale is not found
+				}
+
 				return interaction
 					.reply({
-						content: `Espera um pouco! o comando \`${command.data.name}\` vai ficar disponível pra uso <t:${expiredTimestamp}:R>.`,
+						content: locales[interaction.locale].cooldown,
 						ephemeral: true,
 					})
 					.then(() =>
