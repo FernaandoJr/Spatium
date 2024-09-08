@@ -4,6 +4,10 @@ module.exports = {
 	cooldown: 5,
 	data: new SlashCommandBuilder()
 		.setName("nickname")
+        .setNameLocalizations({
+            "en-US": "nickname",
+			"pt-BR": "apelido",
+        })
 		.setDescription("Altera o apelido de alguém no servidor")
 		.setDescriptionLocalizations({
 			"en-US": "Change someone server's nickname",
@@ -34,8 +38,8 @@ module.exports = {
 				})
 				.setDescription("Apelido desejado")
 				.setDescriptionLocalizations({
-					"en-US": "Type a new user's nickname.",
-					"pt-BR": "Digite um novo apelido para o usuário.",
+					"en-US": "Type a new user's nickname (Don't include this field to reset).",
+					"pt-BR": "Digite um novo apelido para o usuário (Não inclua este campo para redefinir).",
 				})
 				.setMaxLength(32)
 		)
@@ -51,12 +55,12 @@ module.exports = {
         // dicionário das traduções
         const locales = {
             "en-US": {
-                reset: `${user}` + " nickname got reseted!",
-                success: `${user}` + " nickname was changed successfully to `" + `${nick}` +"!`"
+                reset: `${user}` + " nickname on this server has been reset.",
+                success: `${user}` + " nickname on this server has been changed to `" + `${nick}` +"!`"
             },
             "pt-BR": {
-                reset: "Apelido do usuário " + `${user}` + " foi resetado!",
-                success: "Apelido do usuário " + `${user}` + " alterado com sucesso para `" + `${nick}` +"!`",
+                reset: "Apelido do usuário neste servidor" + `${user}` + " foi resetado!",
+                success: "Apelido do usuário neste servidor" + `${user}` + " alterado com sucesso para `" + `${nick}` +"!`",
             }
         }
 
@@ -74,3 +78,4 @@ module.exports = {
 		}
 	},
 };
+
