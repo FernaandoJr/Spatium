@@ -55,12 +55,12 @@ module.exports = {
         // dicionário das traduções
         const locales = {
             "en-US": {
-                reset: `${user}` + " nickname on this server has been reset.",
-                success: `${user}` + " nickname on this server has been changed to `" + `${nick}` +"!`"
+                reset: `${user} nickname on this server has been reset.`,
+                success: `${user} nickname on this server has been changed to ${nick}!`,
             },
             "pt-BR": {
-                reset: "Apelido do usuário neste servidor" + `${user}` + " foi resetado!",
-                success: "Apelido do usuário neste servidor" + `${user}` + " alterado com sucesso para `" + `${nick}` +"!`",
+                reset: `Apelido do usuário neste servidor ${user} foi resetado!`,
+                success: `Apelido do usuário neste servidor ${user} alterado com sucesso para ${nick}!`,
             }
         }
 
