@@ -31,6 +31,12 @@ module.exports = {
 				type: ActivityType.Streaming,
 				url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 			},
+			{
+				name: "🤫",
+				type: ActivityType.Custom,
+				state: "Moggando os betinhas do dc...",
+				url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+			},
 		]
 
 		setInterval(() =>{
